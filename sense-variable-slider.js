@@ -144,16 +144,16 @@ var myAppearenceSection = {
 
 
 			if(mySliderObjProps.singleRange === 'single'){
-	 			var myHTML = '<input type="hidden" id="myIdInputVariableValue" class="text"> <div class="slider-wrapper"> <div class="slider-label"> <label>' 
+	 			var myHTML = '<div class="variable-slider-container"><input type="hidden" id="myIdInputVariableValue" class="text"> <div class="slider-wrapper"> <div class="slider-label"> <label>' 
 	 					+ ( mySliderObjProps.bold ? '<b>' : '')  +  ( mySliderObjProps.italic ? '<i>' : '')
 		            	+ ( mySliderObjProps.showlabel ? mySliderObjProps.label : '') 
 		            	+ ( mySliderObjProps.bold ? '</b>' : '') +  ( mySliderObjProps.italic ? '</i>' : '')
 		            	+ '</label></div> <div class="slider-object"><input type="range" id="myIdInputSliderObj" class="' + mySliderObjProps.theme + '" min="' 
-		            	+ mySliderObjProps.min + '" max="' + mySliderObjProps.max + '" step="' + mySliderObjProps.step + '" "> </div> </div>';	
+		            	+ mySliderObjProps.min + '" max="' + mySliderObjProps.max + '" step="' + mySliderObjProps.step + '" "> </div> </div> </div>';	
 			} else if(mySliderObjProps.singleRange === 'range'){
-	   			var myHTML = '<p> <label for="myIdSliderDualValue">' + ( !mySliderObjProps.showlabel ? '' : 'Variable Value: ') +  ' </label> '
+                var myHTML = '<div class="variable-slider-container"> <p> <label for="myIdSliderDualValue">' + ( !mySliderObjProps.showlabel ? '' : 'Variable Value: ') +  ' </label> '
 	   					+ '<input type="text" id="myIdSliderDualValue" readonly style="border:0; color:#f6931f; font-weight:bold;"> </p>'
-	   					+ '<div id="myIdDivSliderDual"></div>';
+	   					+ '<div id="myIdDivSliderDual"></div> </div>';
 			}
 
 
