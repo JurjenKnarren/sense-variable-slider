@@ -129,6 +129,7 @@ var myAppearenceSection = {
 				min: layout.props.myCustomObj.myObjVariableMinValue, //Object Prop contains Variable Min Value
 				max: layout.props.myCustomObj.myObjVariableMaxValue, //Object Prop contains Variable Max Value
 				step: layout.props.myCustomObj.myObjVariableStepValue, //Object Prop contains Variable Step Value
+				value: layout.props.myCustomObj.myObjSwitchLabelValue, //Object Prop contains Variable Value
 				singleRange: layout.props.myCustomObj.myObjSliderSingleRangeRadioButton, //Object Prop contains whether it is Single or Range of values				
 				defaultMin: layout.props.myCustomObj.myObjVariableDefaultStartMinValue, //Object Prop contains Variable Min Value
 				defaultMax: layout.props.myCustomObj.myObjVariableDefaultStartMaxValue, //Object Prop contains Variable Max Value				
@@ -139,6 +140,13 @@ var myAppearenceSection = {
 				theme: layout.props.myCustomObj.myObjSliderThemeDropdown, //Object Prop contains boolean value (checkbox) for bold formatting								
 			};		
 
+            app.variable.getContent('test').then(function (reply) {
+                console.log(reply.qContent.qString);
+                mySliderObjProps.value = reply.qContent.qString;
+            }, function (errorObject) {
+                console.log(errorObject);
+            });
+
 			var myDevMessage = '############# Hi there, this extension has been built by Deepak Vadithala. Follow me @dvadithala. Modified for Qlik Sense June 2017 release by Jurjen Knarren #############';
 
 
@@ -147,7 +155,7 @@ var myAppearenceSection = {
 	 					+ ( mySliderObjProps.bold ? '<b>' : '')  +  ( mySliderObjProps.italic ? '<i>' : '')
 		            	+ ( mySliderObjProps.showlabel ? mySliderObjProps.label : '') 
 		            	+ ( mySliderObjProps.bold ? '</b>' : '') +  ( mySliderObjProps.italic ? '</i>' : '')
-		            	+ '</label></div> <div class="slider-object"><input type="range" id="myIdInputSliderObj" class="' + mySliderObjProps.theme + '" min="' 
+		            	+ '</label></div> <div class="slider-object"><input type="range" id="myIdInputSliderObj" class="' + mySliderObjProps.theme + '" value="' + mySliderObjProps.value + '" min="' 
 		            	+ mySliderObjProps.min + '" max="' + mySliderObjProps.max + '" step="' + mySliderObjProps.step + '" "> </div> </div> </div>';	
 			} else if(mySliderObjProps.singleRange === 'range'){
                 var myHTML = '<div class="variable-slider-container"> <p> <label for="myIdSliderDualValue">' + ( !mySliderObjProps.showlabel ? '' : 'Variable Value: ') +  ' </label> '
@@ -158,17 +166,17 @@ var myAppearenceSection = {
 
 			$element.html(myHTML);
 
-			var myVariablesArr= [layout.props.myCustomObj.myObjVariableName, layout.props.myCustomObj.myObjVariableValue];
+			var myVariablesArr = [layout.props.myCustomObj.myObjVariableName, layout.props.myCustomObj.myObjVariableValue];
 
 			app.variable.setNumValue(myVariablesArr[0], myVariablesArr[1]);
 
 			/* ==========================================================*/
 			/* This code gets executed when the SINGLE slider object is changed */
 			if(mySliderObjProps.singleRange === 'single' || myCodeExecCounter === 1){
-				$('#myIdInputSliderObj').on('change', function(){
-				    console.log($('#myIdInputVariableValue').val());
-				    $('#myIdInputVariableValue').val($('#myIdInputSliderObj').val());
-				    app.variable.setNumValue(myVariablesArr[0], Number($('#myIdInputVariableValue').val()));
+                $('#myIdInputSliderObj').on('change', function () {
+                    myVariablesArr[1] = Number($('#myIdInputSliderObj').val());
+                    $('#myIdInputVariableValue').val(myVariablesArr[1]);
+                    app.variable.setNumValue(myVariablesArr[0], myVariablesArr[1]);
 				});
 			}
 			/* ==========================================================*/
@@ -193,8 +201,7 @@ var myAppearenceSection = {
 				}
 			}
 			/* ==========================================================*/			
-			console.log('myCodeExecCounter: '+ myCodeExecCounter);
-			myCodeExecCounter = myCodeExecCounter + 1;
+			myCodeExecCounter++;
 		}
 	};
 
