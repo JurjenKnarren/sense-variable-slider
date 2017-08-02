@@ -1,14 +1,13 @@
 define( [
     "qlik", 
     "jquery",
-    "css!./sense-variable-slider.css",
     "css!./jquery-ui.css",
-	"https://code.jquery.com/ui/1.12.0/jquery-ui.js",
-	"https://code.jquery.com/jquery-1.12.4.js"
-    // "./js/myCode"
+    "css!./sense-variable-slider.css",
+	"https://code.jquery.com/ui/1.12.1/jquery-ui.js"
 ],
 /**
-* @owner Deepak Vadithala (AKA: DV), @dvadithala */
+* @owner Deepak Vadithala (AKA: DV), @dvadithala
+* Modified for Qlik Sense June 2017 release by Jurjen Knarren */
 
 function (qlik, $, cssContent, jqueryCSS, jqueryUICDN, jqueryCDN) {
 
@@ -140,7 +139,7 @@ var myAppearenceSection = {
 				theme: layout.props.myCustomObj.myObjSliderThemeDropdown, //Object Prop contains boolean value (checkbox) for bold formatting								
 			};		
 
-			var myDevMessage = '############# Hi there, this extension has been built by Deepak Vadithala. Follow me @dvadithala #############';
+			var myDevMessage = '############# Hi there, this extension has been built by Deepak Vadithala. Follow me @dvadithala. Modified for Qlik Sense June 2017 release by Jurjen Knarren #############';
 
 
 			if(mySliderObjProps.singleRange === 'single'){

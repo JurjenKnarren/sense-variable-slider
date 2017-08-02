@@ -1,5 +1,53 @@
+/* Layout fixes for Qlik Sense editor (June 2017 release)
+----------------------------------*/
+.ui-icon {
+    display: flex;
+}
+
+.ui-accordion .ui-accordion-header {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+.ui-accordion .ui-accordion-content {
+    padding: 0px;
+    border-top: 0;
+}
+
+.ui-widget {
+    font-family: inherit; /*"QlikView Sans",sans-serif*/
+}
+
+.ui-widget-content {
+    border: none;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+/* We use html here because we need a greater specificity to make sure disabled
+works properly when clicked or hovered */
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+    border: none;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+    border: none;
+}
+
+
+/*
+----------------------------------*/
 .variable-slider-container {
-    padding: 0px 10px 0px 10px;
+    padding: 4px 10px 0px 10px;
 }
 
 .slider-wrapper{
