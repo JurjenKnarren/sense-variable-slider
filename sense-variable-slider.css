@@ -43,6 +43,21 @@ a.ui-button:active,
     border: none;
 }
 
+.ui-widget {
+    font-size: 13px;
+}
+
+.ui-widget .ui-widget {
+    font-size: 13px;
+}
+
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+    font-size: 13px;
+}
+
 
 /*
 ----------------------------------*/
